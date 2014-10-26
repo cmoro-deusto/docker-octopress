@@ -6,9 +6,9 @@ RUN apt-get update
 RUN apt-get install -y ruby ruby-dev git build-essential python
 
 # Set correct local
-RUN locale-gen es_ES.UTF-8
-ENV LANG es_ES.UTF-8
-ENV LC_CTYPE es_ES.UTF-8
+RUN locale-gen en_GB.UTF-8
+ENV LANG en_GB.UTF-8
+ENV LC_CTYPE en_GB.UTF-8
 
 # Create editor userspace
 RUN groupadd octopress
@@ -23,8 +23,8 @@ RUN chown octopress:octopress /home/octopress/projects
 RUN gem install bundler
 USER octopress
 WORKDIR /tmp
-# Change your project here (istall your project gems version)
-RUN git clone -b source https://github.com/ticketbis/ticketbis.github.io.git octopress
+# Change your project here (install your project gems version)
+RUN git clone -b source https://github.com/cmoro-deusto/webavg.git octopress
 WORKDIR /tmp/octopress
 RUN bundle install
 #RUN rake install
