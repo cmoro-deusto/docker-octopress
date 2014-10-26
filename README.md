@@ -37,6 +37,6 @@ Run the docker container (will be removed when exit), map localhost 4000 port to
 container 4000 port, and our /home/slok/projects/ path to /home/octopress/projects
 container path:
 
-    docker run --rm -it -p 4000:4000 -v /home/slok/projects/:/home/octopress/projects slok/octopress
+    docker run --rm -it -p 4000:4000 -v /home/dordoka/Code/:/home/octopress/Code dordoka/octopress
 
 Example: https://asciinema.org/a/11050
