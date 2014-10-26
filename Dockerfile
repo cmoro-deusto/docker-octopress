@@ -16,23 +16,17 @@ RUN useradd octopress -m -g octopress -s /bin/bash
 RUN passwd -d -u octopress
 RUN echo "octopress ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/octopress
 RUN chmod 0440 /etc/sudoers.d/octopress
-RUN mkdir /home/octopress/projects
-RUN chown octopress:octopress /home/octopress/projects
+RUN mkdir /home/octopress/Code
+RUN chown octopress:octopress /home/octopress/Code
 
 # Set octopress
 RUN gem install bundler
 USER octopress
 WORKDIR /tmp
-# Change your project here (install your project gems version)
-RUN git clone -b source https://github.com/cmoro-deusto/webavg.git octopress
-WORKDIR /tmp/octopress
-RUN bundle install
-#RUN rake install
-
 RUN rm -rf /tmp/octopress
 # Use vagrant user for the upcoming tasks
 CMD ["/bin/bash"]
 
-VOLUME "/home/octopress/projects"
+VOLUME "/home/octopress/Code"
 EXPOSE 4000
-WORKDIR /home/octopress/projects
+WORKDIR /home/octopress/Code
